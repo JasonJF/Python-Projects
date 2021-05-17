@@ -6,16 +6,22 @@
 #-------------------------------------------------------------------------------------------------------------------
 
 import visa
+import os
+os.add_dll_directory('C:\\Program Files (x86)\\Keysight\\IO Libraries Suite\\bin')
+import pyvisa
+
 
 class InstrumentList():
     def __init__(self):
-        rm = visa.ResourceManager()
+        # rm = visa.ResourceManager() ##visa original location
+        rm = pyvisa.ResourceManager('ktvisa32') ##visa secondary location
         self.instruments = rm.list_resources()
 
 class Instrument():
 
     def __init__(self, address):
-        rm = visa.ResourceManager()
+        # rm = visa.ResourceManager()
+        rm = pyvisa.ResourceManager('ktvisa32')  ##visa secondary location
         #self.instruments = rm.list_resources()
         self.address = address
         self.realname = rm.open_resource(self.address)

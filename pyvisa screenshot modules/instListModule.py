@@ -90,7 +90,7 @@ def createInstList(tab):
     # Dictionary with options
 
 
-    tkvar.set(instruments[1])  # set the default option
+    tkvar.set(instruments[0])  # set the default option
 
     popupMenu = OptionMenu(mainframe, tkvar, *instruments)
     popupMenu.configure(width=35)

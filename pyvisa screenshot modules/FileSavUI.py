@@ -16,7 +16,9 @@ except:
 
 
 from instListModule import *
-from CXA_SSave import * #screenshot module for specific machine
+# from CXA_SSave import * #screenshot module for specific machine
+from E4407B_SSave import * #screenshot module for specific machine
+from screenshot_test import *
 import os
 
 root = tk.Tk()
@@ -36,7 +38,7 @@ createInstList(tab2)
 
 defaultName = None
 saveLocation = None
-fileFormat = ["BMP", "JPEG"]
+fileFormat = ["BMP", "GIF"]
 
 
 def saveButton():
@@ -62,7 +64,8 @@ def saveButton():
             inst = getInst()
             instrument = vi.Instrument(inst)
             print(instrument.realname)
-            saveScreenshot(instrument.realname,e1.get(),e2.get())
+            # saveScreenshot(instrument.realname,e1.get(),e2.get())
+            saveSpurs(instrument.realname,e1.get(),e2.get())
             #print(fullname)
             #print(frmt)
 

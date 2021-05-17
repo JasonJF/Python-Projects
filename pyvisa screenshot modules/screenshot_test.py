@@ -13,11 +13,12 @@ def saveSpurs(instrument, fileLocation, fileName):
     x = 150
     while (x<=250):
         
-        fname = ("fileName + {}".format(x)))
-        saveScreenshot(instrument.realname,fileLocation,fname)
+        fname = (fileName + "{}".format(x))
+        saveScreenshot(instrument,fileLocation,fname)
         print("{} saved.".format(fname))    
         x = x+10
-        raw_input('Press enter to cont..')
+        # raw_input('Press enter to cont..') #Python 2.7
+        input('Press enter to cont..') #Python 3
     
 
 # E4407B.close()
