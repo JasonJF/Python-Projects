@@ -62,7 +62,7 @@ def saveScreenshot(instrument, fileLocation, fileName):
     ##Delete screenshot from ram
     E4407B.write(deleteString)
 
-    E4407B.close()
-    rm.close()
+    # E4407B.close()
+    # rm.close()
 
     # end of Untitled

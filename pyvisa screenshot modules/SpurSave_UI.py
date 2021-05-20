@@ -64,8 +64,8 @@ def saveButton():
             inst = getInst()
             instrument = vi.Instrument(inst)
             print(instrument.realname)
-            saveScreenshot(instrument.realname,e1.get(),e2.get())
-            # saveSpurs(instrument.realname,e1.get(),e2.get())
+            # saveScreenshot(instrument.realname,e1.get(),e2.get())
+            saveSpurs(instrument.realname,e1.get(),e2.get())
             #print(fullname)
             #print(frmt)
 
