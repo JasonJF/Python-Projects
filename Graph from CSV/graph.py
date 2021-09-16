@@ -1,10 +1,15 @@
 #adapted from https://www.youtube.com/watch?v=spALaS5BFX8
 
+from PyQt5 import QtWidgets
+from pyqtgraph import PlotWidget, plot
+import pyqtgraph as pg
+import os, sys
+
+#old code
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 import datetime
-import os, sys
 import time
 
 
@@ -35,14 +40,14 @@ y = list(y_map)                             #unpack the map object
 
 print((x[0]))
 # print(convert(x[0]))
-print(timestamp_str)
+# print(timestamp_str)
 # print(y)
 
 #Line Graph
 
-# plt.xlabel('Time', fontsize=18)
-# plt.ylabel('ERA Temp', fontsize=16)
-# # plt.scatter(x, y)
-# plt.plot(x, y)
+plt.xlabel('Time', fontsize=18)
+plt.ylabel('ERA Temp', fontsize=16)
+# plt.scatter(x, y)
+plt.plot(x, y)
 
-# plt.show()
+plt.show()
