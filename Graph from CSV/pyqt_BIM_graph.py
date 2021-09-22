@@ -4,6 +4,7 @@ import pyqtgraph as pg
 import pandas as pd
 import numpy as np
 import datetime
+import pyqtgraph.exporters
 
 from pyqtgraph.graphicsItems.PlotItem.PlotItem import PlotItem
 
@@ -60,7 +61,7 @@ tempERA_map = map(lambda temp: (temp/1000),tempERA_raw) #convert from milli degr
 tempERA = list(tempERA_map)                             #unpack the map object
 
 #create graphs
-g1 = pg.PlotDataItem(x_values, tempERA, pen = 'b')
+g1 = pg.PlotCurveItem(x_values, tempERA, pen = 'b')
 g2 = pg.PlotDataItem(x_values, tempURA, pen = 'r')
 g3 = pg.PlotDataItem(x_values, y = bim_P_Out_L, pen = 'g')
 g4 = pg.PlotDataItem(x_values, y = bim_1_G_L, pen = 'y')
@@ -82,9 +83,13 @@ scene = QGraphicsScene()
 
 qgv.setScene(scene)
 # qgv.setFixedSize(600, 600)
-qgv.setSceneRect(0,0,600,400)
+qgv.setSceneRect(-50,-50,600,400)
+qgv.fitInView(scene.sceneRect())
 qgv.show()
 
+# graphWindow1.setWindowTitle('Current-Voltage')
+graphWindow1.setLabel('left', 'Temperature', units='deg',color='grey', **{'font-size':'10pt'})
+graphWindow1.setLabel('right', 'Power', units='dBm',color='grey', **{'font-size':'10pt'})
 graphWindow1.showAxis('right')
 graphWindow1.getAxis('right').linkToView(graphWindow2)
 graphWindow2.setXLink(graphWindow1)
@@ -102,10 +107,11 @@ graphWindow2.addItem(g4)
 
 scene.addItem(graphWindow1)
 scene.addItem(graphWindow2)
+# qgv.plot(g3)
 # view = QGraphicsView(scene)
 # view.show()
-
-
+exporter = pg.exporters.ImageExporter(graphWindow1)
+exporter.export('scene2.png')
 
 
 status = app.exec_()
