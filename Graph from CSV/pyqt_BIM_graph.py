@@ -1,5 +1,7 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QGraphicsScene, QGraphicsView
+from PyQt5 import QtGui
+from PyQt5.QtGui import QImage, QPainter
+from PyQt5.QtWidgets import QApplication, QGraphicsLayout, QGraphicsScene, QGraphicsView
 import pyqtgraph as pg
 import pandas as pd
 import numpy as np
@@ -13,6 +15,8 @@ app = QApplication(sys.argv)
 pg.setConfigOption('background', 'w')
 # win = pg.plot()
 qgv = QGraphicsView()
+# win = pg.GraphicsWindow()
+# qgv = pg.GraphicsLayoutWidget()
 # pItem = PlotItem()
 graphWindow1 = PlotItem()
 graphWindow2 = pg.ViewBox()
@@ -108,11 +112,31 @@ graphWindow2.addItem(g4)
 scene.addItem(graphWindow1)
 scene.addItem(graphWindow2)
 # qgv.plot(g3)
+
 # view = QGraphicsView(scene)
 # view.show()
-exporter = pg.exporters.ImageExporter(graphWindow1)
-exporter.export('scene2.png')
+#export image
+# QtGui.QApplication.processEvents()
+# exporter = pg.exporters.ImageExporter(graphWindow1)
+# exporter.export('scene2.png')
+
+def _save_image(self):
+
+    # Get region of scene to capture from somewhere.
+    area = scene.sceneRect()
+
+    # Create a QImage to render to and fix up a QPainter for it.
+    image = QImage(600,400, QImage.Format_ARGB32_Premultiplied)
+    painter = QPainter(image)
+
+    # Render the region of interest to the QImage.
+    self.render(painter, image.rect(), area)
+    painter.end()
+
+    # Save the image to a file.
+    image.save("capture.png")
 
 
+_save_image(qgv)
 status = app.exec_()
 sys.exit(status)
