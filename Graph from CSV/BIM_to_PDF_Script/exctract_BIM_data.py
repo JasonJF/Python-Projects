@@ -44,44 +44,60 @@ tx_out = list(map(lambda x: convertValues((-24.8614817), (x/1000), 58.5), tx_out
 bim_i = list(map(lambda num: (num/1000),bim_i_raw))
 bim_q = list(map(lambda num: (num/1000),bim_q_raw))
 
+#getting maximum and minimum
+# max_ERA_Temp = max(tempERA)
+# max_ERA_index = tempERA.index(max_ERA_Temp)
+# print(max_ERA_Temp)
+# print(max_ERA_index)
 
-# print(x_strings[0])
-# print(tempERA[0])
+
+# print(xdict[0])
+# print(max(tempERA))
 # print(tempURA[0])
 # print(bim_P_Out[0])
 # print(bim_P_Out_func[0])
 # print(tx_in[0])
 
 #Plot Data
+
 era = {
-    "plotName": "Temp vs BIM P out and BIM 1 Ghz",
+    "plotName": "Temp vs BIM P out & BIM 1 Ghz",
     "x_values": x_values,
+    "time": xdict,
     "era_temps": tempERA,
     "ura_temps": tempURA,
     "y1_values": bim_P_Out,
     "y1_name": "BIM P Out",
     "y2_values": bim_1_G,
-    "y2_name": "BIM 1 Ghz"
+    "y2_name": "BIM 1 Ghz",
+    "right_axis_title": "Power",
+    "right_axis_unit": "(dBm)"
 }
 tx_bims = {
     "plotName": "Temp vs TX_In & TX_Out",
     "x_values": x_values,
+    "time": xdict,
     "era_temps": tempERA,
     "ura_temps": tempURA,
     "y1_values": tx_in,
     "y1_name": "TX_IN",
     "y2_values": tx_out,
-    "y2_name": "TX_OUT"
+    "y2_name": "TX_OUT",
+    "right_axis_title": "Power",
+    "right_axis_unit": "(dBm)"
 }
 iq_bims = {
     "plotName": "Temp vs IQ BIMS",
     "x_values": x_values,
+    "time": xdict,
     "era_temps": tempERA,
     "ura_temps": tempURA,
     "y1_values": bim_i,
     "y1_name": "BIM I",
     "y2_values": bim_q,
-    "y2_name": "BIM Q"
+    "y2_name": "BIM Q",
+    "right_axis_title": "Voltage",
+    "right_axis_unit": "(V)"
 }
 #Call the plotting function
 generate_Plots(era)
