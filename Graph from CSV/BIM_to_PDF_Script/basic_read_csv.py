@@ -5,13 +5,16 @@ from pathlib import Path
 
 def rinseBimCSV():
 
-    inputFileName = "\Graph from CSV\BIM_Original.csv"
-    outputFileName = "\cleanBIM.csv"
+    serialNumber = "EDM152 URA151"
+    # inputFileName = "\Graph from CSV\BIM_Original.csv"
+    inputFileName = "\BIM.csv"  #when running via main.py file use this line
+    outputFileName = f"\{serialNumber}cleanBIM.csv"
     savePath = str(Path(__file__).absolute().parent)
     fullSavePath = savePath  + "\BIM Logs"
-    inputFile = os.path.dirname(os.getcwd())+inputFileName
+    # inputFile = os.path.dirname(os.getcwd())+inputFileName
+    inputFile = os.getcwd()+inputFileName           #use when running from main file
     outputFile = fullSavePath + outputFileName
-    print(fullSavePath)
+    # print(fullSavePath)
     ##Create directory to store file in
     if not os.path.exists(os.path.dirname(outputFile)):
         try:
@@ -21,8 +24,8 @@ def rinseBimCSV():
                 raise
 
    
-    print(inputFile)
-    print(outputFile)
+    # print(inputFile)
+    # print(outputFile)
 
     # open input CSV file as source
     # open output CSV file as result

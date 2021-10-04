@@ -9,8 +9,10 @@ Copyright (c) 2021 Your Company
 ##Rinse the BIM file
 # from CSV_parsing.basic_read_csv import rinseBimCSV
 from basic_read_csv import *
+from exctract_BIM_data import *
 
 #Clean up the BIM file
 rinseBimCSV()
 
 #Extract data from the cleanBIM.csv
+extract_BIM_Data()
