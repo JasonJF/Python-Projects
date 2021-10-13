@@ -5,7 +5,7 @@ from pathlib import Path
 
 def rinseBimCSV():
 
-    serialNumber = "EDM152 URA151"
+    serialNumber = "EDM129 URA007"
     # inputFileName = "\Graph from CSV\BIM_Original.csv"
     inputFileName = "\BIM.csv"  #when running via main.py file use this line
     # outputFileName = f"\{serialNumber}cleanBIM.csv"
