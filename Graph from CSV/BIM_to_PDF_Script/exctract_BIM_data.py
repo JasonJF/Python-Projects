@@ -15,6 +15,8 @@ import os
 def extract_BIM_Data():
     #Get data from file
     # df = pd.read_csv('../BIM Logs/cleanBIM.csv')
+    edm_SN = input("Please enter the serial number of the EDM:")
+    ura_SN = input("Please enter the serial number of the URA:")
     print(os.getcwd())
     df = pd.read_csv(os.getcwd() +'/BIM Logs/cleanBIM.csv')      #use this line when running from main.py
 
@@ -75,7 +77,8 @@ def extract_BIM_Data():
         "y2_values": bim_1_G,
         "y2_name": "BIM 1 Ghz",
         "right_axis_title": "Power",
-        "right_axis_unit": "(dBm)"
+        "right_axis_unit": "(dBm)",
+        "fileName": f'EDM{edm_SN}_URA{ura_SN}'
     }
     tx_bims = {
         "plotName": "Temp vs TX_In & TX_Out",
@@ -88,7 +91,8 @@ def extract_BIM_Data():
         "y2_values": tx_out,
         "y2_name": "TX_OUT",
         "right_axis_title": "Power",
-        "right_axis_unit": "(dBm)"
+        "right_axis_unit": "(dBm)",
+        "fileName": f'EDM{edm_SN}_URA{ura_SN}'
     }
     iq_bims = {
         "plotName": "Temp vs IQ BIMS",
@@ -101,7 +105,8 @@ def extract_BIM_Data():
         "y2_values": bim_q,
         "y2_name": "BIM Q",
         "right_axis_title": "Voltage",
-        "right_axis_unit": "(V)"
+        "right_axis_unit": "(V)",
+        "fileName": f'EDM{edm_SN}_URA{ura_SN}'
     }
     #Call the plotting function
     generate_Plots(era)

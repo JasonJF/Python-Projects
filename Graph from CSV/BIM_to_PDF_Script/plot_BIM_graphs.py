@@ -10,11 +10,11 @@ import plotly.io as pio
 
 def generate_Plots(plotData):
 
-    serialNumber = "EDM026 URA025"
+    serialNumber = plotData["fileName"]
     #Set up paths to save files
     plotName = plotData["plotName"]
     savePath = str(Path(__file__).absolute().parent)
-    fullSavePath = savePath  + "\images\\" + serialNumber + plotName + ".png"
+    fullSavePath = savePath  + "\images\\" + serialNumber + " "+ plotName + ".png"
     ##Create directory to store file in
     if not os.path.exists(os.path.dirname(fullSavePath)):
         try:
@@ -115,7 +115,7 @@ def generate_Plots(plotData):
     #export
     pio.write_image(fig, fullSavePath, width=1000, height=600)
     # fig.write_image("images/multiple_figures_bim.png")
-    print(plotName + " Generated")
+    print(serialNumber + " "+ plotName + " Generated")
 
 def addAnnotations(fig, values, name, label_y):
     max_value = max(values)
