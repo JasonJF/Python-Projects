@@ -42,7 +42,7 @@ def extract_BIM_Data():
     tempERA = list(map(lambda num: (num/1000),tempERA_raw))
     bim_P_Out = list(map(lambda x: ((x/1000) * (-45.45) + 15), bim_P_Out_raw))
     bim_P_Out_func = list(map(lambda x: convertValues((-45.45), (x/1000), 15), bim_P_Out_raw))
-    bim_1_G = list(map(lambda x: convertValues((-45.45), (x/1000), 15), bim_1_G_raw))
+    bim_1_G = list(map(lambda z: convertValues((-45.45), (z/1000), 15), bim_1_G_raw))
     tx_in = list(map(lambda x: convertValues((1/(-22*2.786)), (x), 25), tx_in_raw))
     tx_out = list(map(lambda x: convertValues((-24.8614817), (x/1000), 58.5), tx_out_raw))
     bim_i = list(map(lambda num: (num/1000),bim_i_raw))

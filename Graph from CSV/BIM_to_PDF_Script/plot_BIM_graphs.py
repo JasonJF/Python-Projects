@@ -10,7 +10,7 @@ import plotly.io as pio
 
 def generate_Plots(plotData):
 
-    serialNumber = "EDM152 URA151"
+    serialNumber = "EDM026 URA025"
     #Set up paths to save files
     plotName = plotData["plotName"]
     savePath = str(Path(__file__).absolute().parent)
@@ -92,8 +92,8 @@ def generate_Plots(plotData):
     #         arrowhead=1)
 
     #Add annotations
-    addAnnotations(fig, plotData["y1_values"], plotData["y1_name"])
-    addAnnotations(fig, plotData["y2_values"], plotData["y2_name"])
+    addAnnotations(fig, plotData["y1_values"], plotData["y1_name"], 1.1)
+    addAnnotations(fig, plotData["y2_values"], plotData["y2_name"], 1.19)
 
     # Set x-axis title
     fig.update_xaxes(title_text="Time")
@@ -117,7 +117,7 @@ def generate_Plots(plotData):
     # fig.write_image("images/multiple_figures_bim.png")
     print(plotName + " Generated")
 
-def addAnnotations(fig, values, name):
+def addAnnotations(fig, values, name, label_y):
     max_value = max(values)
     max_index = values.index(max_value)
     # max_string = f"Max: {y1_max_value}"
@@ -129,18 +129,26 @@ def addAnnotations(fig, values, name):
     # print(max_index)
     
     ## Max Annotation
-    fig.add_annotation(x=max_index, y=max_value,
-            xref="x",
-            yref="y2",
+    fig.add_annotation(x=0.9, y=label_y,
+            xref="paper",
+            yref="paper",
+            font=dict(
+            size=12,
+            color="#000000"
+            ),
             text=f"Max {name}: {round(max_value,2)}",
-            showarrow=True,
+            showarrow=False,
             arrowhead=1)
     ## Min annotation
-    fig.add_annotation(x=min_index, y=min_value,
-            xref="x",
-            yref="y2",
+    fig.add_annotation(x=0.5, y=label_y,
+            xref="paper",
+            yref="paper",
+            font=dict(
+            size=12,
+            color="#000000"
+            ),
             text=f"Min {name}: {round(min_value,2)}",
-            showarrow=True,
+            showarrow=False,
             arrowhead=1)
 
 # generate_Plots()

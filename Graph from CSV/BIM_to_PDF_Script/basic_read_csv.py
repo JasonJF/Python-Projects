@@ -8,7 +8,8 @@ def rinseBimCSV():
     serialNumber = "EDM152 URA151"
     # inputFileName = "\Graph from CSV\BIM_Original.csv"
     inputFileName = "\BIM.csv"  #when running via main.py file use this line
-    outputFileName = f"\{serialNumber}cleanBIM.csv"
+    # outputFileName = f"\{serialNumber}cleanBIM.csv"
+    outputFileName = "\cleanBIM.csv"
     savePath = str(Path(__file__).absolute().parent)
     fullSavePath = savePath  + "\BIM Logs"
     # inputFile = os.path.dirname(os.getcwd())+inputFileName
